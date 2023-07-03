@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "4be8d61c-8822-4d9a-a038-1d4ae6e37185",
+		"name": "Spring security lab collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "80947"
+	},
+	"item": [
+		{
+			"name": "Login user with admin role",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"admin@miu.edu\",\n    \"password\":\"password\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/uaa/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"uaa",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZGFtQG1pdS5lZHUiLCJpYXQiOjE2ODgzNDQwODQsImV4cCI6MTY4ODM0NDk4NH0.m6kra3wuf7lAujra3E0PVP0r6C87YGc0Mvhy6JPyzM8",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8090/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Address allowed only for Admin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtaXUuZWR1IiwiaWF0IjoxNjg4MzQ0MTA1LCJleHAiOjE2ODgzNDUwMDV9.fX7Dqy74lfCJKL6VxDDypPvvo35RQsJjamyKpIU-p50",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"anton\",\n    \"password\":\"123456\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/address",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login as user with client role",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"adam@miu.edu\",\n    \"password\":\"password\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/uaa/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"uaa",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
