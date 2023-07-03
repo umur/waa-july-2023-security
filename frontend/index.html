@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signin and Signup</title>
+</head>
+<body>
+  <h1>Signin</h1>
+  <form id="signin-form">
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+    <br>
+    <button type="submit">Signin</button>
+  </form>
+
+  <h1>Signup</h1>
+  <form id="signup-form">
+    <label for="email">Email:</label>
+    <input type="email" id="signup-email" required>
+    <br>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="signup-firstname" required>
+    <br>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="signup-lastname" required>
+    <br>
+    <label for="city">City:</label>
+    <input type="text" id="signup-city" required>
+    <br>
+    <label for="zip">ZIP:</label>
+    <input type="text" id="signup-zip" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="signup-password" required>
+    <br>
+    <button type="submit">Signup</button>
+  </form>
+
+  <script>
+    const BASE_URL = 'http://localhost:8080/uaa';
+
+    // Signin form submission
+    const signinForm = document.getElementById('signin-form');
+    signinForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const signinData = {
+        email,
+        password,
+      };
+
+      try {
+        const response = await fetch(BASE_URL + '/signin', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(signinData),
+        });
+
+        if (!response.ok) {
+          throw new Error('Invalid email or password');
+        }
+
+    
+        const  token  = await response.json();
+
+        // Store the token in localStorage
+        localStorage.setItem('token', JSON.stringify(token));
+	
+
+        // Redirect the user to the desired page
+        window.location.href = 'loggedin.html';
+      } catch (error) {
+        // Handle signin error
+        console.error(error);
+        // Display an error message to the user
+      }
+    });
+
+    // Signup form submission
+    const signupForm = document.getElementById('signup-form');
+    signupForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('signup-email').value;
+      const firstName = document.getElementById('signup-firstname').value;
+      const lastName = document.getElementById('signup-lastname').value;
+      const city = document.getElementById('signup-city').value;
+      const zip = document.getElementById('signup-zip').value;
+      const password = document.getElementById('signup-password').value;
+
+      const signupData = {
+        email,
+        firstName,
+        lastName,
+        city,
+        zip,
+        password,
+      };
+
+      try {
+        const response = await fetch(BASE_URL + '/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(signupData),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to register user');
+        }
+
+        // Display a success message to the user
+        console.log('User registered successfully');
+        // Redirect the user to the signin page or display a message to prompt signin
+      } catch (error) {
+        // Handle signup error
+        console.error(error);
+        // Display an error message to the user
+      }
+    });
+  </script>
+</body>
+</html>
