@@ -5,5 +5,5 @@ import org.springframework.data.repository.ListCrudRepository;
 import com.miu.waa.lab3.entity.User;
 
 public interface UserRepo extends ListCrudRepository<User, Integer> {
-
+    public User findByEmail(String email);
 }

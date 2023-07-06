@@ -33,4 +33,7 @@ public class Product {
     @ManyToOne()
     @JoinColumn(name = "category_id")
     private Category category;
+    @JoinColumn(name = "created_user_id")
+    @ManyToOne
+    private User createdUser;
 }

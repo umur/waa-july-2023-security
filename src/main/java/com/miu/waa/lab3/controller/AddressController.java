@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.miu.waa.lab3.entity.Address;
-import com.miu.waa.lab3.service.AddressService;
+import com.miu.waa.lab3.service.impl.AddressServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/addresses")
 public class AddressController {
-    private final AddressService addressService;
+    private final AddressServiceImpl addressService;
     
     @PostMapping
     Address create(@RequestBody Address address) {

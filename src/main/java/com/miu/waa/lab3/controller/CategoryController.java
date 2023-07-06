@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.miu.waa.lab3.entity.Category;
-import com.miu.waa.lab3.service.CategoryService;
+import com.miu.waa.lab3.service.impl.CategoryServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/categories")
 public class CategoryController {
-    private final CategoryService categoryService;
+    private final CategoryServiceImpl categoryService;
 
     @PostMapping
     Category create(@RequestBody Category category) {

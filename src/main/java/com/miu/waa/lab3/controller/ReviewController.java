@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.miu.waa.lab3.entity.Review;
-import com.miu.waa.lab3.service.ReviewService;
+import com.miu.waa.lab3.service.impl.ReviewServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/reviews")
 public class ReviewController {
-    private final ReviewService reviewService;
+    private final ReviewServiceImpl reviewService;
 
     @PostMapping
     Review create(@RequestBody Review review) {

@@ -1,4 +1,4 @@
-package com.miu.waa.lab3.configuration;
+package com.miu.waa.lab3.config;
 
 import org.springframework.context.annotation.Bean;
 
@@ -9,7 +9,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
-public class SwaggerConfiguration {
+public class SwaggerConfig {
 
     @Bean
     public Docket api() {

@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.miu.waa.lab3.entity.Product;
 import com.miu.waa.lab3.entity.Review;
-import com.miu.waa.lab3.service.ProductService;
-import com.miu.waa.lab3.service.ReviewService;
+import com.miu.waa.lab3.service.impl.ProductServiceImpl;
+import com.miu.waa.lab3.service.impl.ReviewServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,8 +22,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/products")
 public class ProductController {
-    private final ProductService productService;
-    private final ReviewService reviewService;
+    private final ProductServiceImpl productService;
+    private final ReviewServiceImpl reviewService;
 
     @PostMapping
     Product create(@RequestBody Product product) {
