@@ -1,6 +1,7 @@
 package product.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import product.dto.review.CreateReviewDto;
 import product.dto.review.UpdateReviewDto;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/reviews")
 @RequiredArgsConstructor
+@PreAuthorize("hasAuthority('ADMIN')")
 public class ReviewController {
 
     private final ReviewService reviewService;

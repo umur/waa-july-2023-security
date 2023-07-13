@@ -1,6 +1,7 @@
 package product.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import product.dto.product.CreateProductDto;
 import product.dto.product.UpdateProductDto;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/products")
 @RequiredArgsConstructor
+@PreAuthorize("hasAuthority('ADMIN') and hasAuthority('USER')")
 public class ProductController {
 
     private final ProductService productService;

@@ -1,6 +1,7 @@
 package product.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import product.dto.user.CreateUserDto;
 import product.dto.user.UpdateUserDto;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
+@PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
 
     private final UserService userService;
@@ -26,7 +28,7 @@ public class UserController {
         return userService.findById(id);
     }
 
-    @PostMapping
+    //@PostMapping
     private User create(@RequestBody CreateUserDto userDto){
         return userService.create(userDto);
     }

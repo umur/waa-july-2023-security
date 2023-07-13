@@ -2,10 +2,13 @@ package product.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import product.annotation.ProfanityFilter;
 import product.dto.product.CreateProductDto;
 import product.dto.product.UpdateProductDto;
 import product.entity.Product;
+import product.entity.User;
 import product.repository.ProductRepo;
 import product.service.ProductService;
 
@@ -45,8 +48,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @ProfanityFilter
     public Product create(CreateProductDto productDto){
         Product product = modelMapper.map(productDto, Product.class);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        product.setUser(user);
         return productRepo.save(product);
     }
 

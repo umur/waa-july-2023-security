@@ -1,6 +1,7 @@
 package product.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import product.dto.category.CreateCategoryDto;
 import product.dto.category.UpdateCategoryDto;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/categories")
 @RequiredArgsConstructor
+@PreAuthorize("hasAuthority('ADMIN')")
 public class CategoryController {
 
     private final CategoryService categoryService;

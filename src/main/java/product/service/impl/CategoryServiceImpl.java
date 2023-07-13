@@ -3,6 +3,7 @@ package product.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import product.annotation.ProfanityFilter;
 import product.dto.category.CreateCategoryDto;
 import product.dto.category.UpdateCategoryDto;
 import product.entity.Category;
@@ -29,6 +30,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @ProfanityFilter
     public Category create(CreateCategoryDto categoryDto){
         Category category = modelMapper.map(categoryDto, Category.class);
         return categoryRepo.save(category);

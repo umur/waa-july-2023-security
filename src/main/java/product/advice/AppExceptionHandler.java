@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
 public class AppExceptionHandler {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(Exception.class)
+    //@ExceptionHandler(Exception.class)
     public ExceptionMessage handleException(Exception ex) {
         return new ExceptionMessage(ex.getMessage());
     }

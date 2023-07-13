@@ -2,10 +2,13 @@ package product.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import product.annotation.ProfanityFilter;
 import product.dto.review.CreateReviewDto;
 import product.dto.review.UpdateReviewDto;
 import product.entity.Review;
+import product.entity.User;
 import product.repository.ReviewRepo;
 import product.service.ReviewService;
 
@@ -35,8 +38,11 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    @ProfanityFilter
     public Review create(CreateReviewDto reviewDto){
         Review review = modelMapper.map(reviewDto, Review.class);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        review.setUser(user);
         return reviewRepo.save(review);
     }
 

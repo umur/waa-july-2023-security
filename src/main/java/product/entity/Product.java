@@ -31,4 +31,7 @@ public class Product {
     @JsonBackReference
     private List<Review> reviews;
 
+    @ManyToOne
+    private User user;
+
 }

@@ -17,13 +17,13 @@ VALUES
     ('Soccer Ball', 24.99, 4, 5);
 
 -- Insert data into the 'user' table
-INSERT INTO user (email, first_name, last_name, password)
+INSERT INTO user (email, first_name, last_name, password, role)
 VALUES
-    ('john.doe@example.com', 'John', 'Doe', 'password123'),
-    ('jane.smith@example.com', 'Jane', 'Smith', 'pass321'),
-    ('mike.wilson@example.com', 'Mike', 'Wilson', 'securepwd'),
-    ('amy.jones@example.com', 'Amy', 'Jones', 'password456'),
-    ('mark.johnson@example.com', 'Mark', 'Johnson', 'pwd789');
+    ('john.doe@example.com', 'John', 'Doe', 'password123', 'ADMIN'),
+    ('jane.smith@example.com', 'Jane', 'Smith', 'pass321', 'ADMIN'),
+    ('mike.wilson@example.com', 'Mike', 'Wilson', 'securepwd', 'ADMIN'),
+    ('amy.jones@example.com', 'Amy', 'Jones', 'password456', 'ADMIN'),
+    ('mark.johnson@example.com', 'Mark', 'Johnson', 'pwd789', 'ADMIN');
 
 -- Insert data into the 'address' table
 INSERT INTO address (city, street, zip, user_id)
