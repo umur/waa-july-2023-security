@@ -1,7 +1,7 @@
 package online.moumini.spring.data.one.service;
 
 import online.moumini.spring.data.one.model.AppUser;
-import online.moumini.spring.data.one.repository.UserRepository;
+import online.moumini.spring.data.one.repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class AppUserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private AppUserRepository userRepository;
 
     public Iterable<AppUser> getAllUsers() {
         return userRepository.findAll();

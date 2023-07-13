@@ -1,7 +1,7 @@
 package online.moumini.spring.data.one.controller;
 
 import online.moumini.spring.data.one.model.AppUser;
-import online.moumini.spring.data.one.repository.UserRepository;
+import online.moumini.spring.data.one.repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private AppUserRepository userRepository;
 
     @GetMapping
     public Iterable<AppUser> getAllUsers() {
