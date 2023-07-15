@@ -77,7 +77,7 @@ public class AuthServiceImpl implements AuthService {
         List<Role> roles = new ArrayList<>();
         roles.add(optionalRole.get());
 
-        user.setRoles(roles);;
+        user.setRoles(roles);
         userRepo.save(user);
     }
 }
